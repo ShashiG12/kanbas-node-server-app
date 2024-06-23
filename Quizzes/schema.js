@@ -22,6 +22,7 @@ const quizSchema = new mongoose.Schema({
     shuffleAnswers: {type: Boolean, default: true},
     timeLimit: Number,
     multipleAttempts: {type: Boolean, default: false},
+    howManyAttempts: Number,
     showCorrectAnswers: Boolean,
     accessCode: String,
     oneAtATime: {type: Boolean, default: true},
