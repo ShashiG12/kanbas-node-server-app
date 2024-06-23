@@ -22,12 +22,39 @@ const quizSchema = new mongoose.Schema({
     shuffleAnswers: {type: Boolean, default: true},
     timeLimit: Number,
     multipleAttempts: {type: Boolean, default: false},
-    showCorrectAnswers: Date,
+    showCorrectAnswers: Boolean,
     accessCode: String,
     oneAtATime: {type: Boolean, default: true},
     webcamRequired: {type: Boolean, default: false},
     published : {type: Boolean, default: false},
-    questions: []
+    questions: [{
+      title: String,
+      type: {
+        type: String,
+        enum: ["CHOICE", "TF", "BLANKS"],
+        default: "CHOICE",
+      },
+      points: Number,
+      question: String,
+      choices: [{
+        text: String,
+        correct: Boolean
+      }],
+      correctAnswer: Boolean,
+      blankAnswers: [{
+        type:String
+      }]
+    }],
+    userAttempts: [{
+      userID: String,
+      attempts: [{
+        answers: [{
+          questionID: String,
+          tfAnswer: Boolean,
+          selectedAnswer: String,
+        }]
+      }]
+    }]
   },
   { collection: "quizzes" }
 );
