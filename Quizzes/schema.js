@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 const quizSchema = new mongoose.Schema({
     title: String,
     course: String,
-    availableDate: Date,
-    dueDate: Date,
-    untilDate: Date,
+    availableDate: {type: Date, default: new Date()},
+    dueDate: {type: Date, default: new Date()},
+    untilDate: {type: Date, default: new Date()},
     points: Number,
     numQuestions: Number,
     instructions: String,
@@ -53,7 +53,8 @@ const quizSchema = new mongoose.Schema({
           questionID: String,
           tfAnswer: Boolean,
           selectedAnswer: String,
-        }]
+        }],
+        score:Number
       }]
     }]
   },
